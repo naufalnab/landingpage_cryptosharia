@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kampus Saham - Belajar Menemukan Saham Multibagger</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+          sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 60px;
+        background: #000;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-shield {
+        width: 40px;
+        height: 50px;
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        clip-path: polygon(
+          50% 0%,
+          100% 20%,
+          100% 80%,
+          50% 100%,
+          0% 80%,
+          0% 20%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+
+      .logo-text {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .header-btn {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: transform 0.3s;
+      }
+
+      .header-btn:hover {
+        transform: scale(1.05);
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 80px 40px 60px;
+        background: #000;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero h1 .highlight {
+        color: #d4a853;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #ccc;
+        margin-bottom: 50px;
+      }
+
+      /* Stats Carousel */
+      .stats-banner {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 15px 40px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0 60px 40px;
+        border-radius: 8px;
+      }
+
+      .stats-carousel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin: 0 60px 80px;
+        position: relative;
+      }
+
+      .carousel-arrow {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .carousel-arrow:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .stat-card {
+        background: #fff;
+        color: #000;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        min-width: 280px;
+      }
+
+      .stat-card .percentage {
+        font-size: 48px;
+        font-weight: 900;
+        color: #d4a853;
+        margin-bottom: 15px;
+      }
+
+      .stat-card .company-logo {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .stat-card .company-logo img {
+        max-height: 100%;
+        max-width: 200px;
+      }
+
+      /* Video Section */
+      .video-section {
+        text-align: center;
+        padding: 60px 60px;
+        background: #000;
+      }
+
+      .video-section h2 {
+        font-size: 42px;
+        margin-bottom: 40px;
+      }
+
+      .video-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .video-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 50%;
+        height: 0;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .video-thumbnails {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .video-thumb {
+        width: 200px;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .video-thumb:hover {
+        transform: scale(1.05);
+      }
+
+      .video-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Comparison Section */
+      .comparison-section {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .comparison-section h2 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      .comparison-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 60px auto 0;
+      }
+
+      .comparison-card {
+        padding: 50px;
+        border-radius: 30px;
+      }
+
+      .comparison-card.dont {
+        background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+      }
+
+      .comparison-card.do {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+      }
+
+      .comparison-card h3 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        font-weight: 900;
+      }
+
+      .comparison-list {
+        list-style: none;
+      }
+
+      .comparison-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 25px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .comparison-list li::before {
+        content: "✗";
+        font-size: 24px;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .comparison-card.dont .comparison-list li::before {
+        content: "✗";
+        color: #ff4444;
+      }
+
+      .comparison-card.do .comparison-list li::before {
+        content: "✓";
+        color: #000;
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .testimonials-section h2 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 60px;
+      }
+
+      .testimonials-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: #1a1a1a;
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 4px solid #d4a853;
+      }
+
+      .testimonial-card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      /* Why Section */
+      .why-section {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .why-section h2 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 60px;
+      }
+
+      .why-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      .why-item {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+        margin-bottom: 40px;
+      }
+
+      .why-number {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      .why-content h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #d4a853;
+      }
+
+      .why-content p {
+        color: #ccc;
+        line-height: 1.7;
+      }
+
+      .why-images {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .why-images img {
+        width: 100%;
+        border-radius: 15px;
+      }
+
+      /* Curriculum Section */
+      .curriculum-section {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .curriculum-section h2 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 60px;
+      }
+
+      .curriculum-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .curriculum-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      .curriculum-image {
+        width: 100%;
+        border-radius: 20px;
+      }
+
+      .day-item {
+        margin-bottom: 40px;
+      }
+
+      .day-title {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .day-title .highlight {
+        color: #d4a853;
+      }
+
+      .day-description {
+        color: #ccc;
+        line-height: 1.7;
+        font-size: 16px;
+      }
+
+      /* Bonus Section */
+      .bonus-section {
+        padding: 80px 60px;
+        background: #000;
+        text-align: center;
+      }
+
+      .bonus-section h2 {
+        font-size: 24px;
+        color: #d4a853;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .bonus-section h3 {
+        font-size: 36px;
+        margin-bottom: 10px;
+      }
+
+      .bonus-section h3 .highlight {
+        color: #d4a853;
+      }
+
+      .bonus-images {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1000px;
+        margin: 40px auto;
+      }
+
+      .bonus-images img {
+        width: 100%;
+        border-radius: 15px;
+      }
+
+      .bonus-badge {
+        background: #fff;
+        color: #d4a853;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 18px;
+        display: inline-block;
+        margin: 30px 0;
+      }
+
+      /* Merchandise Section */
+      .merch-section {
+        padding: 80px 60px;
+        background: #000;
+        text-align: center;
+      }
+
+      .merch-section h2 {
+        font-size: 20px;
+        color: #d4a853;
+        margin-bottom: 30px;
+      }
+
+      .merch-section h3 {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+
+      .merch-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto 40px;
+      }
+
+      .merch-item {
+        background: #1a1a1a;
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      .merch-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+      }
+
+      .bonus-value {
+        background: #fff;
+        color: #000;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 18px;
+        display: inline-block;
+        margin: 30px 0;
+      }
+
+      .bonus-value::before {
+        content: "✓ ";
+        color: #d4a853;
+        font-size: 24px;
+      }
+
+      /* Registration Section */
+      .registration-section {
+        padding: 80px 60px;
+        background: #000;
+        text-align: center;
+      }
+
+      .registration-section h2 {
+        font-size: 42px;
+        margin-bottom: 10px;
+      }
+
+      .registration-section h2 .highlight {
+        color: #d4a853;
+      }
+
+      .registration-section .date {
+        font-size: 20px;
+        color: #d4a853;
+        margin-bottom: 10px;
+      }
+
+      .registration-section .time {
+        font-size: 18px;
+        color: #ccc;
+        margin-bottom: 50px;
+      }
+
+      .price-box {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 50px;
+        border-radius: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .price-box .subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .price-box .price {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .price-box .slots {
+        font-size: 14px;
+        margin-bottom: 30px;
+      }
+
+      .features-list {
+        text-align: left;
+        margin: 30px 0;
+      }
+
+      .features-list li {
+        margin: 15px 0;
+        font-size: 16px;
+      }
+
+      .features-list li::before {
+        content: "✓ ";
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .register-btn {
+        background: #000;
+        color: #fff;
+        padding: 18px 50px;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+        margin-top: 20px;
+        transition: transform 0.3s;
+      }
+
+      .register-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .disclaimer {
+        font-size: 12px;
+        margin-top: 20px;
+        opacity: 0.8;
+      }
+
+      /* Countdown Section */
+      .countdown-section {
+        padding: 60px 60px;
+        background: #000;
+        text-align: center;
+      }
+
+      .countdown-section h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .countdown-section h3 .red {
+        color: #ff4444;
+      }
+
+      .countdown-section p {
+        color: #ccc;
+        margin-bottom: 40px;
+      }
+
+      .countdown {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: 900;
+      }
+
+      .countdown-item {
+        text-align: center;
+      }
+
+      .countdown-item .number {
+        color: #d4a853;
+        font-size: 64px;
+      }
+
+      .countdown-item .label {
+        font-size: 16px;
+        color: #ccc;
+        margin-top: 10px;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 80px 60px;
+        background: #000;
+      }
+
+      .faq-section h2 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      .faq-section h3 {
+        text-align: center;
+        font-size: 20px;
+        color: #d4a853;
+        margin-bottom: 40px;
+      }
+
+      .faq-list {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 20px 30px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-item:hover {
+        opacity: 0.9;
+      }
+
+      /* Quote Section */
+      .quote-section {
+        padding: 80px 60px;
+        background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+        margin: 0 60px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .quote-section img {
+        width: 300px;
+        border-radius: 15px;
+      }
+
+      .quote-text {
+        flex: 1;
+      }
+
+      .quote-text .quote {
+        font-size: 32px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .quote-text .quote .highlight {
+        color: #d4a853;
+      }
+
+      .quote-text .author {
+        font-size: 18px;
+        color: #d4a853;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 80px 60px;
+        background: #000;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 42px;
+        margin-bottom: 40px;
+      }
+
+      .cta-btn {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 20px 60px;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: transform 0.3s;
+      }
+
+      .cta-btn:hover {
+        transform: scale(1.05);
+      }
+
+      .cta-disclaimer {
+        font-size: 14px;
+        color: #888;
+        margin-top: 20px;
+      }
+
+      /* Footer */
+      .footer {
+        background: linear-gradient(135deg, #d4a853 0%, #f4d58d 100%);
+        color: #000;
+        padding: 50px 60px 30px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .footer-logo-shield {
+        width: 50px;
+        height: 60px;
+        background: #000;
+        clip-path: polygon(
+          50% 0%,
+          100% 20%,
+          100% 80%,
+          50% 100%,
+          0% 80%,
+          0% 20%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4a853;
+        font-size: 24px;
+      }
+
+      .footer-logo-text {
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .footer-contact h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .footer-contact p {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 14px;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #25d366;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+        z-index: 1000;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          padding: 15px 20px;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .comparison-grid,
+        .why-grid,
+        .curriculum-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .testimonials-grid,
+        .bonus-images,
+        .merch-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .countdown {
+          gap: 20px;
+          font-size: 32px;
+        }
+
+        .quote-section {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-shield">🐂</div>
+        <div class="logo-text">Kampus<br />Saham</div>
+      </div>
+      <button class="header-btn" onclick="scrollToRegistration()">
+        Daftar Sekarang
+      </button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>
+        BELAJAR MENEMUKAN SAHAM<br />
+        <span class="highlight">MULTIBAGGER</span><br />
+        HANYA DALAM <span class="highlight">5 HARI</span>
+      </h1>
+      <p>
+        Terbukti ratusan murid berhasil melipatgandakan portoflionya dalam
+        hitungan bulan dengan strategi kami
+      </p>
+    </section>
+
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+      Andry Hakim | Total return Stockwise +80.000%
+    </div>
+
+    <!-- Stats Carousel -->
+    <div class="stats-carousel">
+      <button class="carousel-arrow" onclick="prevStat()">‹</button>
+      <div class="stat-card">
+        <div class="percentage">+150%</div>
+        <div class="company-logo">
+          <div style="font-weight: bold; color: #e74c3c">
+            SINAR TERANG MANDIRI
+          </div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="percentage">+272%</div>
+        <div class="company-logo">
+          <div style="font-weight: bold; color: #3498db">FlexyPack</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="percentage">+3.000%</div>
+        <div class="company-logo">
+          <div style="font-weight: bold; color: #2ecc71">PIK 2</div>
+        </div>
+      </div>
+      <button class="carousel-arrow" onclick="nextStat()">›</button>
+    </div>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <h2>Siapa Sebenarnya <span class="highlight">ANDRY HAKIM</span></h2>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="video-thumbnails">
+        <div class="video-thumb">
+          <div
+            style="
+              background: #1a1a1a;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Video 1
+          </div>
+        </div>
+        <div class="video-thumb">
+          <div
+            style="
+              background: #1a1a1a;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Video 2
+          </div>
+        </div>
+        <div class="video-thumb">
+          <div
+            style="
+              background: #1a1a1a;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Video 3
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+      <h2>
+        Sebelum Investasi, Pastikan
+        <span class="highlight">Kampus Saham</span> Cocok untuk Anda
+      </h2>
+      <div class="comparison-grid">
+        <div class="comparison-card dont">
+          <h3>Jangan Invest Jika</h3>
+          <ul class="comparison-list">
+            <li>Cuma mau ikut-ikutan temen beli saham atau nunggu sinyal</li>
+            <li>Nyari saham gorengan yang naiknya semalam doang</li>
+            <li>Gak sabar belajar, pengennya instan cuan</li>
+            <li>Anti belajar fundamental, maunya ikut rekomendasi doang</li>
+            <li>
+              Gak minat belajar langsung dari praktisi terbukti kaya dari saham
+            </li>
+            <li>Males ikut komunitas & lebih suka jalan sendiri</li>
+          </ul>
+        </div>
+        <div class="comparison-card do">
+          <h3>Invest Jika</h3>
+          <ul class="comparison-list">
+            <li>
+              Anda serius mau belajar analisa saham multibagger dari dasar
+              sampai cuan ratusan persen
+            </li>
+            <li>
+              Anda mencari strategi proven menemukan saham multibagger Andry
+              Hakim & Douglas Goh
+            </li>
+            <li>Anda fokus investasi beneran, bukan spekulasi</li>
+            <li>
+              Anda ingin kaya dari investasi saham multibagger cuan ratusan
+              persen kurang dari 1 tahun
+            </li>
+            <li>
+              Anda ingin mendapatkan informasi terupdate dari Andry Hakim &
+              Douglas Goh
+            </li>
+            <li>
+              Anda komitmen belajar bareng mentor dan komunitas saham terbesar
+              di Indonesia
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2>Apa Kata Murid <span class="highlight">Kampus Saham</span></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Testimoni 1
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Testimoni 2
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 10px;
+              margin-bottom: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Testimoni 3
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Why Section -->
+    <section class="why-section">
+      <h2>KENAPA HARUS <span class="highlight">KAMPUS SAHAM?</span></h2>
+      <div class="why-grid">
+        <div>
+          <div class="why-item">
+            <div class="why-number">1</div>
+            <div class="why-content">
+              <h3>Investor walk the talk<br />Investor Multibagger</h3>
+              <p>
+                Diajarkan langsung oleh Andry Hakim, seorang investor dengan
+                total gain +40.000% selama 4 tahun terakhir. Proven investor
+                bukan cuma ngajarin, tetapi berani buka portofolio juga
+              </p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-number">2</div>
+            <div class="why-content">
+              <h3>Invest Saham dengan kacamata pebisnis dan owner</h3>
+              <p>
+                Background pengusaha, karyawan keluarga dari owner perusahaan
+                publik jadi bisa tahu perspective dari market dan owner
+                perspective, sehingga potensi cuan multibagger lebih tinggi
+              </p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-number">3</div>
+            <div class="why-content">
+              <h3>Real Result: Member Kami Sudah Panen Multibagger</h3>
+              <p>
+                Ratusan member sudah membuktikan mendapatkan keuntungan
+                multibagger dengan mengikuti metode kami
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="why-images">
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Portfolio 1
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Portfolio 2
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Portfolio 3
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Portfolio 4
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More Why Items -->
+    <section class="why-section" style="padding-top: 0">
+      <div class="why-grid">
+        <div class="why-images">
+          <div
+            style="
+              background: #2c3e50;
+              height: 250px;
+              border-radius: 15px;
+              grid-column: 1/-1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event Photos
+          </div>
+        </div>
+        <div>
+          <div class="why-item">
+            <div class="why-number">4</div>
+            <div class="why-content">
+              <h3>
+                Materi dan ilmu yang tidak pernah diajarkan di tempat lain
+              </h3>
+              <p>
+                Mentor punya strategi success story yang fokus ke growth stock,
+                saham2 yang backdoor listing yang value sahamnya masih belum ke
+                unlock/undervalue sehingga jika nanti sahamnya ada corporate
+                action kenaikan sahamnya bisa multibagger
+              </p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-number">5</div>
+            <div class="why-content">
+              <h3>Komunitas Saham Terbesar di Indonesia</h3>
+              <p>
+                Member akan mendapatkan event eksklusif dan bergabung dengan
+                komunitas saham terbesar di Indonesia
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum-section">
+      <h2>MATERI PEMBELAJARAN <span class="highlight">KAMPUS SAHAM</span></h2>
+      <div class="curriculum-grid">
+        <div>
+          <div class="day-item">
+            <div class="why-number" style="margin-bottom: 20px">1</div>
+            <h3 class="day-title">
+              Day 1 (± 4 Jam)<br /><span class="highlight"
+                >Stock Market: The Basics</span
+              >
+            </h3>
+            <p class="day-description">
+              Kalian akan mempelajari konsep dan pengertian dasar untuk
+              berinvestasi saham.
+            </p>
+          </div>
+          <div class="day-item">
+            <div class="why-number" style="margin-bottom: 20px">2</div>
+            <h3 class="day-title">
+              Day 2 (± 4 Jam)<br /><span class="highlight"
+                >Mindset & Pyschology</span
+              >
+            </h3>
+            <p class="day-description">
+              Kalian akan mempelajari bagaimana cara berpikir investor terbaik
+              di dunia & mindset yang benar untuk menang di bursa saham.
+            </p>
+          </div>
+          <div class="day-item">
+            <div class="why-number" style="margin-bottom: 20px">3</div>
+            <h3 class="day-title">
+              Day 3 (± 4 Jam)<br /><span class="highlight"
+                >Trick to Win the Market</span
+              >
+            </h3>
+            <p class="day-description">
+              Kalian akan mempelajari skill bagaimana bisa mendapatkan
+              keuntungan ratusan hingga ribuan persen (Multibagger) di pasar
+              saham.
+            </p>
+          </div>
+        </div>
+        <div
+          style="
+            background: #2c3e50;
+            height: 500px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Book Image
+        </div>
+      </div>
+
+      <div class="curriculum-grid" style="margin-top: 80px">
+        <div
+          style="
+            background: #2c3e50;
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Money Image
+        </div>
+        <div class="day-item">
+          <div class="why-number" style="margin-bottom: 20px">4</div>
+          <h3 class="day-title">
+            Day 4 (± 4 Jam)<br /><span class="highlight"
+              >Money Management Trick</span
+            >
+          </h3>
+          <p class="day-description">
+            Kalian akan mempelajari bagaimana mengatur uang dengan bijak untuk
+            berinvestasi saham.
+          </p>
+        </div>
+      </div>
+
+      <div class="curriculum-grid" style="margin-top: 80px">
+        <div class="day-item">
+          <div class="why-number" style="margin-bottom: 20px">5</div>
+          <h3 class="day-title">
+            Day 5 (EXCLUSIVE)<br /><span class="highlight"
+              >Stock Market Insider Info</span
+            >
+          </h3>
+          <p class="day-description">
+            Eksklusif offline event bersama Andry Hakim & Douglas Goh yang
+            membahas mengenai Market Outlook & Micro, serta sesi Q&A bersama
+            member. Kalian juga akan mendapatkan insight mendalam & detail di
+            bursa saham.
+          </p>
+        </div>
+        <div
+          style="
+            background: #2c3e50;
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Event Image
+        </div>
+      </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="bonus-section">
+      <h2>VIP BONUS</h2>
+      <h3>
+        Bonus Yang Akan Didapatkan Setelah Join Member<br /><span
+          class="highlight"
+          >KAMPUS SAHAM</span
+        >
+      </h3>
+
+      <div style="margin: 60px 0">
+        <div
+          class="why-number"
+          style="
+            margin: 0 auto 30px;
+            width: 80px;
+            height: 80px;
+            font-size: 36px;
+          "
+        >
+          1
+        </div>
+        <h3 style="font-size: 28px; margin-bottom: 40px">
+          Akses Offline Event Dengan Insight Mendalam Secara Macro, Micro<br />&
+          Watchlist Founder
+        </h3>
+        <div class="bonus-images">
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event 1
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event 2
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event 3
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              height: 200px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event 4
+          </div>
+        </div>
+        <div class="bonus-badge">BONUS 150 JT PER TAHUN</div>
+      </div>
+
+      <div style="margin: 60px 0">
+        <div
+          class="why-number"
+          style="
+            margin: 0 auto 30px;
+            width: 80px;
+            height: 80px;
+            font-size: 36px;
+          "
+        >
+          2
+        </div>
+        <h3 style="font-size: 28px; margin-bottom: 40px">
+          Akses Forum Diskusi & Acara Bulanan Gathering Khusus VIP Seperti<br />Stockwise
+          Motorsport Secara Gratis
+        </h3>
+        <div
+          style="
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+          "
+        >
+          <div
+            style="
+              background: #2c3e50;
+              width: 300px;
+              height: 400px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Buka Bersama
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              width: 300px;
+              height: 400px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Event 2
+          </div>
+          <div
+            style="
+              background: #2c3e50;
+              width: 300px;
+              height: 400px;
+              border-radius: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #d4a853;
+            "
+          >
+            Padel Event
+          </div>
+        </div>
+        <div class="bonus-badge">BONUS 20 JT PER TAHUN</div>
+      </div>
+    </section>
+
+    <!-- Merchandise Section -->
+    <section class="merch-section">
+      <div
+        class="why-number"
+        style="margin: 0 auto 30px; width: 80px; height: 80px; font-size: 36px"
+      >
+        3
+      </div>
+      <h3>Gratis Merchandise Ke Semua Member VIP</h3>
+      <div class="merch-grid">
+        <div class="merch-item">
+          <div
+            style="
+              background: #fff;
+              height: 200px;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            ID Card
+          </div>
+        </div>
+        <div class="merch-item">
+          <div
+            style="
+              background: #fff;
+              height: 200px;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            Shirt
+          </div>
+        </div>
+        <div class="merch-item">
+          <div
+            style="
+              background: #fff;
+              height: 200px;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            Cap
+          </div>
+        </div>
+        <div class="merch-item">
+          <div
+            style="
+              background: #fff;
+              height: 200px;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            Notebook
+          </div>
+        </div>
+      </div>
+
+      <p style="margin: 40px 0 20px">
+        Bonus Yang Kalian Dapatkan<br />Setelah Join
+      </p>
+      <div class="bonus-value">BONUS VALUE 175 JT PER TAHUN</div>
+
+      <div
+        style="
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin-top: 40px;
+        "
+      >
+        <div
+          style="
+            background: #2c3e50;
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Result 1
+        </div>
+        <div
+          style="
+            background: #2c3e50;
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Result 2
+        </div>
+        <div
+          style="
+            background: #2c3e50;
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+          "
+        >
+          Result 3
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="registration">
+      <h2>Daftar <span class="highlight">KAMPUS SAHAM</span> Sekarang!</h2>
+      <p class="date">Sesi Terdekat di 3 - 8 Februari 2026</p>
+      <p class="time">Pukul 19.00 - 23.00 WIB</p>
+
+      <div class="price-box">
+        <p class="subtitle">
+          Day 1-4 (Discord) + Day 5 (Offline)<br />Kelas Saham (day 1-4) & The
+          Insiders (day 5)
+        </p>
+        <h3 class="price">
+          <s style="text-decoration: line-through">Rp15jt</s> Rp 14.390.000
+        </h3>
+        <p class="slots">Hanya tersisa 3 dari 10 slot!</p>
+
+        <ul class="features-list">
+          <li>4 Hari Kelas Intensif (Online) + 1 Hari (Offline)</li>
+          <li>Day 1 : Basic to Stock Investing</li>
+          <li>Day 2 : Mindset and Psychology</li>
+          <li>Day 3 : Skill to Win the Market</li>
+          <li>Day 4 : Money Management</li>
+          <li>Sesi Tanya Jawab (Live)</li>
+          <li>10+ Jam Materi Belajar</li>
+          <li>Akses Kampus Saham Community</li>
+          <li>Sisi Meet & Greet</li>
+          <li>Sharing Insights Insider</li>
+          <li>Sharing Hidden Secret</li>
+          <li>Sharing Andry Hakim Watchlist</li>
+          <li>Makan malam bersama di area Jakarta</li>
+        </ul>
+
+        <button
+          class="register-btn"
+          onclick="alert('Terima kasih! Silakan hubungi kami untuk pendaftaran.')"
+        >
+          DAFTAR SEKARANG
+        </button>
+        <p class="disclaimer">*Harga dapat berubah kapanpun</p>
+      </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+      <h3>Hanya tersisa <span class="red">10</span> dari 100 slot!</h3>
+      <p>Pendaftaran akan ditutup dalam</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="number" id="days">32</div>
+          <div class="label">Hari</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="hours">17</div>
+          <div class="label">Jam</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="minutes">12</div>
+          <div class="label">Menit</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="seconds">14</div>
+          <div class="label">Detik</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <h3>Terms & Conditions</h3>
+      <div class="faq-list">
+        <div class="faq-item">
+          <span>Apa itu Kampus Saham?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span>Apa yang membuat Kampus Saham berbeda dari platform lain?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span>Siapa yang cocok untuk bergabung dengan Kampus Saham?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span>Apakah saya akan mendapatkan stockpick?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span
+            >Apakah investasi di saham akan mendapatkan keuntungan sangat
+            besar?</span
+          >
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span
+            >Apakah ada biaya tambahan setelah mendaftar untuk kelas di Kampus
+            Saham?</span
+          >
+          <span>+</span>
+        </div>
+        <div class="faq-item">
+          <span>Bagaimanakah cara refund Kampus Saham ?</span>
+          <span>+</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+      <div
+        style="
+          background: #888;
+          width: 300px;
+          height: 300px;
+          border-radius: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        Warren Buffett
+      </div>
+      <div class="quote-text">
+        <p class="quote">
+          If you don't find a way to
+          <span class="highlight">make money while you sleep,</span> you will
+          work until you die.
+        </p>
+        <p class="author">- Warren Buffett -</p>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Dapatkan multibagger pertama Anda segera!</h2>
+      <button class="cta-btn" onclick="scrollToRegistration()">
+        DAFTAR SEKARANG
+      </button>
+      <p class="cta-disclaimer">*Harga dapat berubah kapanpun</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-logo-shield">🐂</div>
+          <div class="footer-logo-text">KAMPUS<br />SAHAM</div>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p>Instagram | @kampussaham.idn</p>
+          <p>Whatsapp | +6282227878248</p>
+          <p>Privacy Policy</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© Kampus Saham 2024. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div
+      class="whatsapp-float"
+      onclick="window.open('https://wa.me/6282227878248', '_blank')"
+    >
+      💬
+    </div>
+
+    <script>
+      function scrollToRegistration() {
+        document
+          .getElementById("registration")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      function prevStat() {
+        // Carousel logic
+        console.log("Previous stat");
+      }
+
+      function nextStat() {
+        // Carousel logic
+        console.log("Next stat");
+      }
+
+      // Countdown Timer
+      function updateCountdown() {
+        const targetDate = new Date("2026-02-03T00:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>
